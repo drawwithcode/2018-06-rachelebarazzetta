@@ -1,0 +1,27 @@
+{
+  "number" : 6,
+  "pets": [
+    {
+      "name" : "Captain Bubble",
+      "species" : "Goldfish",
+      "favFoods" : "Worms",
+      "birthYear" : "7/10/2018",
+      "photo" : "https://learnwebcode.github.io/json-example/images/cat-2.jpg"
+    },
+    {
+      "name" : "Splishy",
+      "species" : "Python",
+      "favFoods" : "Mice",
+      "birthYear" : "15/06/2015",
+      "photo" : "https://learnwebcode.github.io/json-example/images/dog-1.jpg"
+    },
+    {
+      "name" : "Sir. Pluffington",
+      "species" : "Rabbit",
+      "favFoods" : "Carrots",
+      "birthYear" : "31/12/2017",
+      "photo" : "https://learnwebcode.github.io/json-example/images/cat-1.jpg"
+    }
+
+  ]
+}
