@@ -9,12 +9,8 @@ var myImage5;
 var myImage6;
 var myImage7s;
 var mySong;
-var v = 0;
 var balls = [];
-var rx = 100;
-var ry = 200;
-var rw = 40;
-var rh = 150;
+var textCol = '#0D1B2A';
 
 function preload() {
   // put preload code here
@@ -35,35 +31,28 @@ function preload() {
 
 function setup() {
   // put setup code here
-
   noStroke();
   createCanvas(windowWidth, windowHeight);
   background('lightgreen');
-
-
+  textFont('Poppins');
 }
 
 function draw() {
   // put drawing code here
-
   page01();
-  fill('black');
-  rect(rx, ry, rw, rh);
+  scritta('#FFFF8F');
 
   if (mouseIsPressed == true && mouseButton == RIGHT) {
     page2();
-    fill('black');
-    rect(rx, ry, rw, rh);
+    scritta('#FFFF8F');
   } else if(mouseIsPressed == true && mouseButton == LEFT){
     page01();
-    fill('black');
-    rect(rx, ry, rw, rh);
+    scritta('#FFFF8F');
   }
 
   if (mouseX > rx && mouseX < (rx + rw) && mouseY > ry && mouseY < (ry + rh)) {
     pageVictory();
-    fill('black');
-    rect(rx, ry, rw, rh);
+    scritta('#45D9D9');
     if(mySong.isPlaying() == false){
       mySong.loop();
     }
@@ -73,28 +62,34 @@ function draw() {
     }
   }
 
+  textAlign(CENTER);
+  textStyle(NORMAL);
+  fill(textCol);
+  text("Click right and left button to meet new friends",width -170,height-20);
+  textAlign(LEFT);
 }
 
 function page01() {
 
-  var newBall1 = new Ball(windowWidth / 2, windowHeight / 2, 200, myImage1, );
+  var newBall1 = new Ball(windowWidth / 2, windowHeight / 2 -80, 200, myImage1, 2);
   balls.push(newBall1);
 
-  var newBall0 = new Ball(windowWidth / 2 - 300, windowHeight / 2, 200, myImage2, );
+  var newBall0 = new Ball(windowWidth / 2 - 300, windowHeight / 2 -80, 200, myImage2, 2);
   balls.push(newBall0);
 
-  var newBall2 = new Ball(windowWidth / 2 + 300, windowHeight / 2, 200, myImage3, );
+  var newBall2 = new Ball(windowWidth / 2 + 300, windowHeight / 2 -80, 200, myImage3, 2);
   balls.push(newBall2);
 
-  background('lightgreen');
+  background('#45D9D9');
 
   for (var j = 0; j < balls.length; j++) {
     balls[j].display();
   }
 
   var x1 = width / 2;
-  var y1 = height / 2;
+  var y1 = height / 2-80;
   var radius = 100;
+  textSize(15);
 
   var name1 = myData.pets[1];
   var name1_l = name1.name;
@@ -112,27 +107,30 @@ function page01() {
   var d = dist(x1, y1, mouseX, mouseY);
 
   if (d < radius) {
-    fill('black');
-    textSize(12);
-    text(name1_l, x1 + 20, y1 + 120);
-    text(species1_l, x1 + 20, y1 + 140);
-    text(birthYear1_l, x1 + 20, y1 + 160);
-    text(favFoods1_l, x1 + 20, y1 + 180);
+    fill(textCol);
+    textAlign(CENTER);
+    textStyle(NORMAL);
+    text(name1_l, x1 , y1 + 155);
+    text(species1_l, x1 , y1 + 205);
+    text(birthYear1_l, x1 , y1 + 255);
+    text(favFoods1_l, x1, y1 + 305);
+    textStyle(BOLD);
+    text('Name : ', x1 , y1 + 135);
+    text('Species : ', x1 , y1 + 185);
+    text('Birthday :', x1 , y1 + 235);
+    text('Fav Food : ', x1 , y1 + 285);
 
-    text('Name = ', x1 - 50, y1 + 120);
-    text('Species = ', x1 - 50, y1 + 140);
-    text('Birth Year =', x1 - 50, y1 + 160);
-    text('Fav Food = ', x1 - 50, y1 + 180);
 
     fill(255, 255, 255, 1);
   } else if (d > radius) {
     noFill();
   }
+
   ellipse(x1, y1, radius * 2);
 
 
   var x2 = width / 2 + 300;
-  var y2 = height / 2;
+  var y2 = height / 2-80;
 
   var name2 = myData.pets[2];
   var name2_l = name2.name;
@@ -150,25 +148,28 @@ function page01() {
   var d = dist(x2, y2, mouseX, mouseY);
 
   if (d < radius) {
-    fill('black');
-    text(name2_l, x2 + 20, y2 + 120);
-    text(species2_l, x2 + 20, y2 + 140);
-    text(birthYear2_l, x2 + 20, y2 + 160);
-    text(favFoods2_l, x2 + 20, y2 + 180);
-
-    text('Name = ', x2 - 50, y2 + 120);
-    text('Species = ', x2 - 50, y2 + 140);
-    text('Birth Year =', x2 - 50, y2 + 160);
-    text('Fav Food = ', x2 - 50, y2 + 180);
+    fill(textCol);
+    textAlign(CENTER);
+    textStyle(NORMAL);
+    text(name2_l, x2 , y2 + 155);
+    text(species2_l, x2 , y2 + 205);
+    text(birthYear2_l, x2 , y2 + 255);
+    text(favFoods2_l, x2, y2 + 305);
+    textStyle(BOLD);
+    text('Name : ', x2 , y2 + 135);
+    text('Species : ', x2 , y2 + 185);
+    text('Birthday :', x2 , y2 + 235);
+    text('Fav Food : ', x2 , y2 + 285);
     fill(255, 255, 255, 1);
 
   } else {
     noFill();
   }
+
   ellipse(x2, y2, radius * 2);
 
   var x0 = width / 2 - 300;
-  var y0 = height / 2;
+  var y0 = height / 2 - 80;
 
   var name0 = myData.pets[0];
   var name0_l = name0.name;
@@ -187,43 +188,48 @@ function page01() {
 
   if (d < radius) {
 
-    fill('black');
-    text(name0_l, x0 + 20, y0 + 120);
-    text(species0_l, x0 + 20, y0 + 140);
-    text(birthYear0_l, x0 + 20, y0 + 160);
-    text(favFoods0_l, x0 + 20, y0 + 180);
-
-    text('Name = ', x0 - 50, y0 + 120);
-    text('Species = ', x0 - 50, y0 + 140);
-    text('Birth Year =', x0 - 50, y0 + 160);
-    text('Fav Food = ', x0 - 50, y0 + 180);
-    fill(255, 255, 255, 1);
+    fill(textCol);
+    textAlign(CENTER);
+    textStyle(NORMAL);
+    text(name0_l, x0 , y0 + 155);
+    text(species0_l, x0 , y0 + 205);
+    text(birthYear0_l, x0 , y0 + 255);
+    text(favFoods0_l, x0, y0 + 305);
+    textStyle(BOLD);
+    text('Name : ', x0 , y0 + 135);
+    text('Species : ', x0 , y0 + 185);
+    text('Birthday :', x0 , y0 + 235);
+    text('Fav Food : ', x0 , y0 + 285);
+    fill(255, 255, 255,1);
   } else {
     noFill();
 
   }
+
   ellipse(x0, y0, radius * 2);
 }
 
 function page2() {
 
-  var newBall3 = new Ball(windowWidth / 2, windowHeight / 2, 200, myImage5, );
+  var newBall3 = new Ball(windowWidth / 2, windowHeight / 2 -80, 200, myImage5, );
   balls.push(newBall3);
 
-  var newBall4 = new Ball(windowWidth / 2 - 300, windowHeight / 2, 200, myImage7, );
+  var newBall4 = new Ball(windowWidth / 2 - 300, windowHeight / 2 -80, 200, myImage7, );
   balls.push(newBall4);
 
-  var newBall5 = new Ball(windowWidth / 2 + 300, windowHeight / 2, 200, myImage6, );
+  var newBall5 = new Ball(windowWidth / 2 + 300, windowHeight / 2 -80, 200, myImage6, );
   balls.push(newBall5);
 
-  background('red');
+  background('#45D9D9');
+  textSize(15);
+  textAlign(CENTER);
 
   for (var j = 0; j < balls.length; j++) {
     balls[j].display();
   }
 
   var x1 = width / 2;
-  var y1 = height / 2;
+  var y1 = height / 2 -80;
   var radius = 100;
 
   var name1 = myData3.pets[1];
@@ -242,17 +248,17 @@ function page2() {
   var d = dist(x1, y1, mouseX, mouseY);
 
   if (d < radius) {
-    fill('black');
-    textSize(12);
-    text(name1_l, x1 + 20, y1 + 120);
-    text(species1_l, x1 + 20, y1 + 140);
-    text(birthYear1_l, x1 + 20, y1 + 160);
-    text(favFoods1_l, x1 + 20, y1 + 180);
-
-    text('Name = ', x1 - 50, y1 + 120);
-    text('Species = ', x1 - 50, y1 + 140);
-    text('Birth Year =', x1 - 50, y1 + 160);
-    text('Fav Food = ', x1 - 50, y1 + 180);
+    fill(textCol);
+    textStyle(NORMAL);
+    text(name1_l, x1 , y1 + 155);
+    text(species1_l, x1 , y1 + 205);
+    text(birthYear1_l, x1 , y1 + 255);
+    text(favFoods1_l, x1, y1 + 305);
+    textStyle(BOLD);
+    text('Name : ', x1 , y1 + 135);
+    text('Species : ', x1 , y1 + 185);
+    text('Birthday :', x1 , y1 + 235);
+    text('Fav Food : ', x1 , y1 + 285);
 
     fill(255, 255, 255, 1);
   } else if (d > radius) {
@@ -262,7 +268,7 @@ function page2() {
 
 
   var x2 = width / 2 + 300;
-  var y2 = height / 2;
+  var y2 = height / 2 -80;
 
   var name2 = myData3.pets[2];
   var name2_l = name2.name;
@@ -280,16 +286,17 @@ function page2() {
   var d = dist(x2, y2, mouseX, mouseY);
 
   if (d < radius) {
-    fill('black');
-    text(name2_l, x2 + 20, y2 + 120);
-    text(species2_l, x2 + 20, y2 + 140);
-    text(birthYear2_l, x2 + 20, y2 + 160);
-    text(favFoods2_l, x2 + 20, y2 + 180);
-
-    text('Name = ', x2 - 50, y2 + 120);
-    text('Species = ', x2 - 50, y2 + 140);
-    text('Birth Year =', x2 - 50, y2 + 160);
-    text('Fav Food = ', x2 - 50, y2 + 180);
+    fill(textCol);
+    textStyle(NORMAL);
+    text(name2_l, x2 , y2 + 155);
+    text(species2_l, x2 , y2 + 205);
+    text(birthYear2_l, x2 , y2 + 255);
+    text(favFoods2_l, x2, y2 + 305);
+    textStyle(BOLD);
+    text('Name : ', x2 , y2 + 135);
+    text('Species : ', x2 , y2 + 185);
+    text('Birthday :', x2 , y2 + 235);
+    text('Fav Food : ', x2 , y2 + 285);
     fill(255, 255, 255, 1);
 
   } else {
@@ -298,7 +305,7 @@ function page2() {
   ellipse(x2, y2, radius * 2);
 
   var x0 = width / 2 - 300;
-  var y0 = height / 2;
+  var y0 = height / 2 -80;
 
   var name0 = myData3.pets[0];
   var name0_l = name0.name;
@@ -317,16 +324,17 @@ function page2() {
 
   if (d < radius) {
 
-    fill('black');
-    text(name0_l, x0 + 20, y0 + 120);
-    text(species0_l, x0 + 20, y0 + 140);
-    text(birthYear0_l, x0 + 20, y0 + 160);
-    text(favFoods0_l, x0 + 20, y0 + 180);
-
-    text('Name = ', x0 - 50, y0 + 120);
-    text('Species = ', x0 - 50, y0 + 140);
-    text('Birth Year =', x0 - 50, y0 + 160);
-    text('Fav Food = ', x0 - 50, y0 + 180);
+    fill(textCol);
+    textStyle(NORMAL);
+    text(name0_l, x0 , y0 + 155);
+    text(species0_l, x0 , y0 + 205);
+    text(birthYear0_l, x0 , y0 + 255);
+    text(favFoods0_l, x0, y0 + 305);
+    textStyle(BOLD);
+    text('Name : ', x0 , y0 + 135);
+    text('Species : ', x0 , y0 + 185);
+    text('Birthday :', x0 , y0 + 235);
+    text('Fav Food : ', x0 , y0 + 285);
     fill(255, 255, 255, 1);
   } else {
     noFill();
@@ -336,46 +344,67 @@ function page2() {
 }
 
 function pageVictory() {
-  background('yellow');
+  background('#FFFF8F');
   push();
   imageMode(CENTER);
   translate(width / 2, height / 2);
   rotate(frameCount / 100);
-  image(myImage4, 0, 0, 500, 500);
+  image(myImage4, 0, 0, 400, 400);
   pop();
 
   var name = myData2.name;
   var species = myData2.species;
   var age = myData2.age;
-  fill('black');
-  text('Pet of the day', width / 5 * 4, height / 2 - 80);
-  text('Name =', width / 5 * 4, height / 2 - 60);
-  text(name, width / 5 * 4, height / 2 - 40);
-  text('Species =', width / 5 * 4, height / 2 - 20);
-  text(species, width / 5 * 4, height / 2);
-  text('Age =', width / 5 * 4, height / 2 + 20);
-  text(age, width / 5 * 4, height / 2 + 40);
+  fill(textCol);
+  textSize(15);
+  text('Name =', 40, height / 4 -75);
+  text('Species =', 40, height / 4 - 25);
+  text('Age =', 40, height / 4 + 25);
+  textStyle(NORMAL);
+  text(name, 50, height / 4 - 50);
+  text(species, 50, height / 4);
+  text(age, 50, height / 4 + 50);
 }
 
-function Ball(_x, _y, _diameter, img, col) {
+function Ball(_x, _y, _diameter, img, col, sCol) {
   this.size = _diameter;
   this.x = _x;
   this.y = _y;
   this.img = img;
   this.col = col;
+  this.sCol = sCol;
 
   this.display = function() {
     imageMode(CENTER);
     image(this.img, _x, _y, 200, 200);
     noFill();
+    strokeWeight(2);
+    stroke('white');
     ellipse(this.x, this.y, this.size);
     fill('white');
+    noStroke();
     text(this.label, this.x, this.y);
   }
 }
 
 function click1() {
   background('black');
+}
+
+var rx = 20;
+var ry = 20;
+var rw = 190;
+var rh = 40;
+
+function scritta(_col){
+  this.col = _col;
+  fill(_col);
+  rect(rx, ry, rw, rh, 5);
+  fill(textCol);
+  textStyle(BOLD);
+  textSize(12);
+  textAlign(LEFT);
+  text('Discover the pet of the day',30,45);
 }
 
 function windowResized() {
