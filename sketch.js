@@ -89,7 +89,7 @@ function page01() {
   var x1 = width / 2;
   var y1 = height / 2-80;
   var radius = 100;
-  textSize(15);
+  textSize(14);
 
   var name1 = myData.pets[1];
   var name1_l = name1.name;
@@ -221,7 +221,7 @@ function page2() {
   balls.push(newBall5);
 
   background('#45D9D9');
-  textSize(15);
+  textSize(14);
   textAlign(CENTER);
 
   for (var j = 0; j < balls.length; j++) {
@@ -356,7 +356,7 @@ function pageVictory() {
   var species = myData2.species;
   var age = myData2.age;
   fill(textCol);
-  textSize(15);
+  textSize(14);
   text('Name =', 40, height / 4 -75);
   text('Species =', 40, height / 4 - 25);
   text('Age =', 40, height / 4 + 25);
